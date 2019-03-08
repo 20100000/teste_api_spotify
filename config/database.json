@@ -1,0 +1,9 @@
+{
+  "development":{
+    "host": '127.0.0.1',
+    "database": '',
+    "user": 'root',
+    "password": '',
+    "dialect": 'mysql'
+  }
+}
