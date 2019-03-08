@@ -1,3 +1,4 @@
+const moment = require('moment');
 const _getTasks = async (req, res, next, database, queries) => {
 
     const execute = database.execute;
@@ -17,10 +18,16 @@ const _getTasks = async (req, res, next, database, queries) => {
     });
 };
 
+const dateCreate = () => {
+
+    return moment(new Date(), 'MM-DD-YYYY').utc().format("YYYY-MM-DD HH:mm")
+}
+
 const _addTask = async (req, res, next, database, queries) => {
     const payload = req.body;
     const execute = database.execute;
-    execute(queries.QAddTask, [payload.title, 'tess', '2019-03-08T03:00:00.000Z']).then(results => {
+    const date = dateCreate();
+    execute(queries.QAddTask, [payload.title, 'tess', date]).then(results => {
 
             res.send(JSON.stringify({data:results, success: true}))
         }
