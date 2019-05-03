@@ -3,13 +3,14 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-var cors = require('cors')
+var cors = require('cors');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 //task
 const task = require('./api/task/router');
-
+//Reservar
+const reservas = require('./api/reservas/router');
 const app = express();
 app.use(cors());
 
@@ -27,6 +28,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 app.use(task.path, task.router);
+app.use(reservas.path, reservas.router);
 
 
 // catch 404 and forward to error handler

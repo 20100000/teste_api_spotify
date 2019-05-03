@@ -1,10 +1,10 @@
 const mysql = require('mysql');
 
 const databaseConfig = {
-    host: '127.0.0.1',
+    host: 'localhost',
     user: 'root',
     password: '',
-    database: 'test',
+    database: 'procarbr_aluguel',
     connectionLimit: 200,
     debug: false
 };
