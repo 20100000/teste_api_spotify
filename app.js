@@ -4,17 +4,20 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 var cors = require('cors');
+var cons = require('consolidate');
+
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 //task
-const task = require('./api/task/router');
+const temperatura = require('./api/temperatura/router');
+const musica = require('./api/musica/router');
 //Reservar
-const reservas = require('./api/reservas/router');
 const app = express();
 app.use(cors());
 
 // view engine setup
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
@@ -27,8 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-app.use(task.path, task.router);
-app.use(reservas.path, reservas.router);
+app.use(temperatura.path, temperatura.router);
+app.use(musica.path, musica.router);
 
 
 // catch 404 and forward to error handler
